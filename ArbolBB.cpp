@@ -166,41 +166,41 @@ else  {	              // Caso dos hijos:
 template <class Tipo>     
 void InOrden(Nodo<Tipo>* p)
 {
-	string nomb;
+	Tipo nomb;
 	if (p!=NULL)
 	{
-		InOrden(this,this->ObtIzq(p));
-		nomb=this->ObtInfo(p);
-		//cout << nomb<<endl;
-		cout << nomb<<"  ->  ";
-		InOrden(this,this->ObtDer(p));
+		InOrden(ObtIzq(p));
+		nomb=ObtInfo(p);
+		//std::cout << nomb<<endl;
+		std::cout<< nomb<<"  ->  ";
+		InOrden(ObtDer(p));
 	};
 }
 
 template <class Tipo>
 void PosOrden(Nodo<Tipo>* p)
 {
-  Tipo nomb;
+  	Tipo nomb;
 	if (p!=NULL)
 	{
-		PosOrden(this,this->ObtIzq(p));
-		PosOrden(this,this->ObtDer(p));
-		nomb=this->ObtInfo(p);
-		//cout << nomb<<endl;
-		cout << nomb<<"  ->  ";
+		PosOrden(ObtIzq(p));
+		PosOrden(ObtDer(p));
+		nomb=ObtInfo(p);
+		//std::cout << nomb<<endl;
+		std::cout << nomb<<"  ->  ";
 	};
 }
 
 template <class Tipo>
 void PreOrden(Nodo<Tipo>* p)
 {
-	string nomb;
+	Tipo nomb;
 	if (p!=NULL)
 	{
-		nomb=this->ObtInfo(p);
-		//cout << nomb<<endl;
-		cout << nomb<<"  ->  ";
-		PreOrden(this,this->ObtIzq(p));
-		PreOrden(this,this->ObtDer(p));
+		nomb=ObtInfo(p);
+		//std::cout << nomb<<endl;
+		std::cout << nomb<<"  ->  ";
+		PreOrden(ObtIzq(p));
+		PreOrden(ObtDer(p));
 	};
 }
