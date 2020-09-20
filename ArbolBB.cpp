@@ -162,103 +162,45 @@ else  {	              // Caso dos hijos:
            }
    else return false;    //En caso de que la clave no se encuentre!
 };
-     
-/*
-template <class Tipo>
-bool ArbolBB<Tipo>::Eliminar(Tipo &valor)
-{
-  Apuntador p,ant,temp;
-  bool encontrado;
-  Tipo auxiliar;
-  p=Arbol<Tipo>::ObtRaiz(); 
-  encontrado=false;
-  while ((p!=NULL) && !(encontrado)) {
-     auxiliar=p->ObtInfo();
-     if  (valor==auxiliar)
-	    encontrado=true;
-     else {
-           ant=p; //El padre de p
-           if (valor< auxiliar) 
-                 p=p->ObtIzq();
-          else 
-                 p=p->ObtDer();
-       };
-   };
-if (encontrado)   {   //la Clave esta en el arbol
-        temp=p;   //Apuntador cuyo nodo va a ser eliminado       	            
-        valor=auxiliar;     
-         if (p->ObtDer()==NULL) {  //Tiene un posible Hijo Izquierdo:   
-              if (p==Arbol<Tipo>::ObtRaiz())  //Caso Raiz
-                AsigRaiz(p->ObtIzq());	         //Asigna el hijo izquierdo como Raiz	
-              else    //Se actualiza el Der o Izq del padre seg�n sea el caso
-                if (ant->ObtIzq()==p)  ant->AsigIzq(p->ObtIzq());
-                else                    ant->AsigDer(p->ObtIzq());
-        }
-        else if (p->ObtIzq()==NULL) { 	 //Tiene un posible Hijo Derecho:
-              if (p==Arbol<Tipo>::ObtRaiz()) //Caso Raiz
-                 AsigRaiz(p->ObtDer()); //Asigna el hijo derecho como Raiz	
-              else //Se actualiza el Der o Izq del padre seg�n sea el caso
-            	  if (ant->ObtIzq()==p) ant->AsigIzq(p->ObtDer());
-                  else  ant->AsigDer(p->ObtDer());
 
+template <class Tipo>     
+void InOrden(Nodo<Tipo>* p)
+{
+	string nomb;
+	if (p!=NULL)
+	{
+		InOrden(this,this->ObtIzq(p));
+		nomb=this->ObtInfo(p);
+		//cout << nomb<<endl;
+		cout << nomb<<"  ->  ";
+		InOrden(this,this->ObtDer(p));
+	};
 }
-else  {	              // Caso dos hijos:				
-                ant=p;
-              //El nodo a eliminar ser� el mas a la derecha del subarbol izquierdo
-                temp=p->ObtIzq(); 
-                while (temp->ObtDer()!=NULL) {
-                	    ant=temp;
-                	    temp=temp->ObtDer();       
-                   };
-                 auxiliar=temp->ObtInfo();
-                 p->AsigInfo(auxiliar);
-                 if (ant==p)       ant->AsigIzq(temp->ObtIzq());
-                 else              ant->AsigDer(temp->ObtIzq());
-              };
-           //Sucede para cualquiera de los tres casos
-           delete temp;
-           return true;    
-           }
-   else return false;    //En caso de que la clave no se encuentre!
-};
-*/
 
-
-//===============================================================================================
-//COMPARA 2 STRING Y RETORNA true SI EL PRIMER STRING VA ADELANTE O ES IGUAL -----------FUNCIONAL
-//===============================================================================================
-/*template <class Tipo>
-bool ArbolBB<Tipo>::Comparar(string nom1,string nom2)
+template <class Tipo>
+void PosOrden(Nodo<Tipo>* p)
 {
-	int size1=nom1.size();
-	int size2=nom2.size();
-	int lim;
-	if(size1<size2)
-		lim=size1;
-	else 
-		lim=size2;
-	for (int i = 0; i < lim; i++)
+  Tipo nomb;
+	if (p!=NULL)
 	{
-		if (nom1[i]<nom2[i])
-		{
-			return true;
-			//return nom1;
-		}
-		else if (nom1[i]>nom2[i])
-		{
-			return false;
-			//retunr nom2;
-		}
-	}
-	if (size1==size2)
+		PosOrden(this,this->ObtIzq(p));
+		PosOrden(this,this->ObtDer(p));
+		nomb=this->ObtInfo(p);
+		//cout << nomb<<endl;
+		cout << nomb<<"  ->  ";
+	};
+}
+
+template <class Tipo>
+void PreOrden(Nodo<Tipo>* p)
+{
+	string nomb;
+	if (p!=NULL)
 	{
-		return true;
-	}
-	else if(size1<size2)
-		return true;
-	else
-	{
-			return false;
-	}
-	
-}*/
+		nomb=this->ObtInfo(p);
+		//cout << nomb<<endl;
+		cout << nomb<<"  ->  ";
+		PreOrden(this,this->ObtIzq(p));
+		PreOrden(this,this->ObtDer(p));
+	};
+}

@@ -1,7 +1,8 @@
 #ifndef ArbolBB_H
 #define ArbolBB_H
-#include "Arbol.h"
 #include <string>
+#include <iostream>
+#include "Arbol.h"
 
 template <class Tipo>
 class ArbolBB:public Arbol<Tipo>
@@ -14,6 +15,9 @@ public:
    bool InsertarRecursivo(Nodo<Tipo>* p, Tipo valor);
    bool Eliminar(Tipo &valor);
    //bool Comparar(string nom1,string nom2);
+   void InOrden(Nodo<Tipo>* p);
+   void PosOrden(Nodo<Tipo>* p);
+   void PreOrden(Nodo<Tipo>* p);
 };
 #include "ArbolBB.cpp"
 #endif

@@ -61,7 +61,7 @@ void Controlador::Imprimir(int tipo)
 			cout<<"=============================================================================="<<endl;
   			cout<<"--------------------------------  INORDEN  ----------------------------------"<<endl;
       		cout<<"=============================================================================="<<endl;
-			InOrden(TreePers, TreePers.ObtRaiz());
+			TreePers.InOrden(TreePers.ObtRaiz());
 			vg.Pausa();
 		}
 		//IMPRIMIR SIN VACIAR
@@ -71,7 +71,7 @@ void Controlador::Imprimir(int tipo)
 			cout<<"=============================================================================="<<endl;
   			cout<<"---------------------------------  POSORDEN  ----------------------------------"<<endl;
       		cout<<"=============================================================================="<<endl;
-			PosOrden(TreePers, TreePers.ObtRaiz());
+			TreePers.PosOrden(TreePers.ObtRaiz());
 			vg.Pausa();
 		}
 		else if (tipo==1)
@@ -80,7 +80,7 @@ void Controlador::Imprimir(int tipo)
 			cout<<"=============================================================================="<<endl;
   			cout<<"---------------------------------  PREORDEN ----------------------------------"<<endl;
       		cout<<"=============================================================================="<<endl;
-			PreOrden(TreePers, TreePers.ObtRaiz());
+			TreePers.PreOrden(TreePers.ObtRaiz());
 			vg.Pausa();
 		}
 		else if (tipo==4)
@@ -89,56 +89,17 @@ void Controlador::Imprimir(int tipo)
 			cout<<"=============================================================================="<<endl;
   			cout<<"---------------------------------  PREORDEN ----------------------------------"<<endl;
       		cout<<"=============================================================================="<<endl;
-			PreOrden(TreePers, TreePers.ObtRaiz());
+			TreePers.PreOrden(TreePers.ObtRaiz());
 			cout<<"=============================================================================="<<endl;
   			cout<<"--------------------------------  INORDEN  ----------------------------------"<<endl;
       		cout<<"=============================================================================="<<endl;
-			InOrden(TreePers, TreePers.ObtRaiz());
+			TreePers.InOrden(TreePers.ObtRaiz());
 			cout<<"=============================================================================="<<endl;
   			cout<<"---------------------------------  POSORDEN  ----------------------------------"<<endl;
       		cout<<"=============================================================================="<<endl;
-			PosOrden(TreePers, TreePers.ObtRaiz());
+			TreePers.PosOrden(TreePers.ObtRaiz());
 			vg.Pausa();			
 		}
 	}
 };
 
-
-void Controlador::InOrden(ArbolBB<string> &ArbolBBper,Apuntador p)
-{
-	string nomb;
-	if (p!=NULL)
-	{
-		InOrden(ArbolBBper,ArbolBBper.ObtIzq(p));
-		nomb=ArbolBBper.ObtInfo(p);
-		//cout << nomb<<endl;
-		cout << nomb<<"  ->  ";
-		InOrden(ArbolBBper,ArbolBBper.ObtDer(p));
-	};
-};
-
-void Controlador::PosOrden(ArbolBB<string> &ArbolBBper,Apuntador p)
-{
-	string nomb;
-	if (p!=NULL)
-	{
-		PosOrden(ArbolBBper,ArbolBBper.ObtIzq(p));
-		PosOrden(ArbolBBper,ArbolBBper.ObtDer(p));
-		nomb=ArbolBBper.ObtInfo(p);
-		//cout << nomb<<endl;
-		cout << nomb<<"  ->  ";
-	};
-};
-
-void Controlador::PreOrden(ArbolBB<string> &ArbolBBper,Apuntador p)
-{
-	string nomb;
-	if (p!=NULL)
-	{
-		nomb=ArbolBBper.ObtInfo(p);
-		//cout << nomb<<endl;
-		cout << nomb<<"  ->  ";
-		PreOrden(ArbolBBper,ArbolBBper.ObtIzq(p));
-		PreOrden(ArbolBBper,ArbolBBper.ObtDer(p));
-	};
-};

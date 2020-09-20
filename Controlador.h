@@ -19,13 +19,7 @@ class Controlador
     public:
         Controlador();
         bool IncluirPrsn(); 
-        void Imprimir(int tipo);  
-        void InOrden(ArbolBB<string> &ArbolBBper,Apuntador p);
-        void PosOrden(ArbolBB<string> &ArbArbolBBperol,Apuntador p);
-        void PreOrden(ArbolBB<string> &ArbolBBper,Apuntador p);     
-        /*void InOrden(ArbolBB<string> &ArbolBBper);
-        void PosOrden(ArbolBB<string> &ArbolBBper);
-        void PreOrden(ArbolBB<string> &ArbolBBper);   */                          
+        void Imprimir(int tipo);                        
         
 };
 
